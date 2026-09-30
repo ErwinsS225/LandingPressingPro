@@ -5,6 +5,7 @@ import {
   navLinks,
   whatsappLink,
 } from "../data/site";
+import { TrialCta } from "./cta";
 
 export function AnnouncementBar(): string {
   return html`
@@ -70,14 +71,11 @@ export function Header(): string {
               >🌙</span
             >
           </button>
-          <button
-            type="button"
-            class="btn btn-sm"
-            data-open
-            data-open-source="header"
-          >
-            Essayer gratuitement <span>↗</span>
-          </button>
+          ${TrialCta("Essayer gratuitement", {
+            source: "header",
+            variant: "btn-sm",
+            arrow: true,
+          })}
         </div>
       </nav>
     </header>

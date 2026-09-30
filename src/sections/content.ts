@@ -10,6 +10,7 @@ import {
 } from "../data/sections";
 import { contact, whatsappLink } from "../data/site";
 import { IconCardGrid, SectionHead, StepView } from "../components/cards";
+import { TrialCta } from "../components/cta";
 
 export function PainSection(): string {
   return html`
@@ -164,14 +165,10 @@ export function FinalCtaSection(): string {
         </div>
         <h2 class="mx-auto mb-[18px] max-w-[750px]">${finalCta.title}</h2>
         <p class="!text-[#c5d4ce]">${finalCta.copy}</p>
-        <button
-          type="button"
-          class="btn btn-lime mt-3"
-          data-open
-          data-open-source="cta_final"
-        >
-          ${finalCta.cta}
-        </button>
+        ${TrialCta(finalCta.cta, {
+          source: "cta_final",
+          variant: "btn-lime mt-3",
+        })}
         <p class="fine">${finalCta.fine}</p>
       </div>
     </section>

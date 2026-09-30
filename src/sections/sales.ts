@@ -1,23 +1,22 @@
 import { html } from "../lib/dom";
 import { faq, pricing } from "../data/marketing";
 import { SectionHead } from "../components/cards";
+import { TrialCta } from "../components/cta";
 import type { Plan } from "../types";
 
 function PlanCard({ plan }: { plan: Plan }): string {
   // `data-plan` est repris par la modale (mémorisé puis renvoyé dans le
   // mail) et `data-track` par le module analytics. Le nom du plan sert
   // donc de clé unique aux deux.
+  //
+  // Les formules STARTER et PRO ouvrent l'inscription ; BUSINESS renvoie
+  // vers le contact, faute de palier multi-sites dans l'application.
   const cta = plan.ctaTriggersModal
-    ? html`<button
-        type="button"
-        class="btn w-full text-[13px]"
-        data-open
-        data-plan="${plan.name}"
-        data-track="plan_click"
-        data-track-plan="${plan.name}"
-      >
-        ${plan.cta}
-      </button>`
+    ? TrialCta(plan.cta, {
+        source: `plan_${plan.name.toLowerCase()}`,
+        variant: "w-full text-[13px]",
+        plan: plan.name,
+      })
     : html`<a
         href="${plan.ctaHref ?? "#contact"}"
         class="btn btn-light w-full text-[13px]"

@@ -1,5 +1,6 @@
 import { html } from "../lib/dom";
 import { hero, orders, proof } from "../data/hero";
+import { TrialCta } from "../components/cta";
 
 function PhoneMockup(): string {
   return html`
@@ -91,14 +92,7 @@ export function HeroSection(): string {
           </p>
 
           <div class="flex flex-wrap gap-3 max-[650px]:grid">
-            <button
-              type="button"
-              class="btn"
-              data-open
-              data-open-source="hero"
-            >
-              ${hero.primaryCta}
-            </button>
+            ${TrialCta(hero.primaryCta, { source: "hero" })}
             <a href="${hero.secondaryHref}" class="btn btn-light"
               >${hero.secondaryCta} <span>↗</span></a
             >

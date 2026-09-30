@@ -21,6 +21,33 @@ export function whatsappLink(phone: string, message: string): string {
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 }
 
+/**
+ * URL de l'application (Next.js), sur un autre déploiement.
+ *
+ * Tant qu'elle est vide — l'application n'est pas encore en ligne — les
+ * boutons d'essai continuent d'ouvrir le formulaire de demande. Dès
+ * qu'elle est renseignée, les mêmes boutons mènent à l'inscription.
+ * C'est ce qui évite d'avoir à revenir modifier le code au déploiement.
+ */
+const APP_URL: string = (import.meta.env.VITE_APP_URL ?? "").replace(/\/+$/, "");
+
+/** Vrai si l'application est déployée et donc joignable. */
+export const appDeployed = APP_URL !== "";
+
+/**
+ * Lien vers une page de l'application.
+ *
+ * Renvoie `#` quand l'application n'est pas déployée : les boutons
+ * doivent rester cliquables, l'ancre servant alors de repli plutôt que
+ * d'un lien mort vers `undefined/register`.
+ */
+export function appLink(path = "/register"): string {
+  return appDeployed ? `${APP_URL}${path}` : "#";
+}
+
+/** Marqueur discret pour distinguer un lien réel d'un repli. */
+export const appUrl = APP_URL;
+
 export const navLinks: NavLink[] = [
   { label: "Solution", href: "#solution" },
   { label: "Fonctionnalités", href: "#fonctionnalites" },
