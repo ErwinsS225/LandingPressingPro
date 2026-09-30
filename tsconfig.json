@@ -20,5 +20,7 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src"],
+
+  "//supabase": "Les Edge Functions sont du code Deno : les vérifier avec `tsc` (qui ne connaît pas le runtime Deno) produirait des erreurs sur `Deno.env`. Elles sont typées par le Deno LSP, via deno.json."
 }

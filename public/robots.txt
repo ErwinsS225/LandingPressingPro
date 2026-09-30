@@ -1,0 +1,7 @@
+# Tout le site est public : il ne masque rien.
+# Une seule page, donc une seule URL à indexer — les ancres de section
+# (#tarifs, #faq…) ne sont pas des pages distinctes.
+User-agent: *
+Allow: /
+
+Sitemap: https://pressivoire.ci/sitemap.xml

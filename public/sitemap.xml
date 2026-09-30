@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Une seule page pour l'instant. Dès que les pages ville
+  (« pressing Abidjan », « gestion pressing Yamoussoukro ») ou les
+  pages de contenu existent, ajoutez-les ici avec une `<url>` chacune.
+ .lastmod se met à jour à chaque déploiement.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://pressivoire.ci/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

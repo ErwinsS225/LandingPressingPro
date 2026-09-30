@@ -91,7 +91,12 @@ export function HeroSection(): string {
           </p>
 
           <div class="flex flex-wrap gap-3 max-[650px]:grid">
-            <button type="button" class="btn" data-open>
+            <button
+              type="button"
+              class="btn"
+              data-open
+              data-open-source="hero"
+            >
               ${hero.primaryCta}
             </button>
             <a href="${hero.secondaryHref}" class="btn btn-light"

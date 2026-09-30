@@ -7,6 +7,8 @@
  * préférence système.
  */
 
+import { track } from "./analytics";
+
 export type Theme = "light" | "dark";
 
 const STORAGE_KEY = "pressivoire:theme";
@@ -55,8 +57,10 @@ export function initThemeToggle(): void {
   };
 
   toggle.addEventListener("click", () => {
-    applyTheme(currentTheme() === "dark" ? "light" : "dark");
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    applyTheme(next);
     paint();
+    track("theme_toggle", { theme: next });
   });
 
   paint();

@@ -65,7 +65,12 @@ export function Header(): string {
               >🌙</span
             >
           </button>
-          <button type="button" class="btn btn-sm" data-open>
+          <button
+            type="button"
+            class="btn btn-sm"
+            data-open
+            data-open-source="header"
+          >
             Essayer gratuitement <span>↗</span>
           </button>
         </div>
@@ -79,6 +84,8 @@ export function FloatingContact(): string {
     <a
       href="#contact"
       aria-label="Contacter l’équipe PressIvoire"
+      data-track="contact_click"
+      data-track-source="flottant"
       class="fixed bottom-5 right-5 z-[9] rounded-full bg-wa px-[17px] py-3 text-[13px] font-bold text-white shadow-wa transition hover:brightness-110 max-[650px]:bottom-[13px] max-[650px]:right-[13px] max-[650px]:px-[14px] max-[650px]:py-[11px]"
     >
       <span class="mr-[7px] text-[17px]">◉</span>Parler à l’équipe

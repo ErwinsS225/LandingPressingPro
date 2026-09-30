@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PressIvoire">
+  <rect width="64" height="64" rx="14" fill="#126c54" />
+  <path
+    fill="#dff06d"
+    d="M20 46V18h13.5c6.2 0 10.5 3.8 10.5 9.6 0 6-4.4 9.9-10.8 9.9h-5.6V46H20zm7.6-14.7h5.1c2.6 0 4.2-1.6 4.2-3.9 0-2.2-1.6-3.7-4.2-3.7h-5.1v7.6z"
+  />
+</svg>

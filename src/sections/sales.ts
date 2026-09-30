@@ -4,13 +4,25 @@ import { SectionHead } from "../components/cards";
 import type { Plan } from "../types";
 
 function PlanCard({ plan }: { plan: Plan }): string {
+  // `data-plan` est repris par la modale (mémorisé puis renvoyé dans le
+  // mail) et `data-track` par le module analytics. Le nom du plan sert
+  // donc de clé unique aux deux.
   const cta = plan.ctaTriggersModal
-    ? html`<button type="button" class="btn w-full text-[13px]" data-open>
+    ? html`<button
+        type="button"
+        class="btn w-full text-[13px]"
+        data-open
+        data-plan="${plan.name}"
+        data-track="plan_click"
+        data-track-plan="${plan.name}"
+      >
         ${plan.cta}
       </button>`
     : html`<a
         href="${plan.ctaHref ?? "#contact"}"
         class="btn btn-light w-full text-[13px]"
+        data-track="plan_click"
+        data-track-plan="${plan.name}"
         >${plan.cta}</a
       >`;
 

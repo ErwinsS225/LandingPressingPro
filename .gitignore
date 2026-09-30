@@ -12,6 +12,17 @@ dist
 dist-ssr
 *.local
 
+# Variables d'environnement : elles sont lues par Vite au moment du build
+# (cf. src/lib/analytics.ts) et ne doivent jamais être versionnées.
+# `.env.example` est, lui, versionné : il documente les clés attendues.
+.env
+.env.*
+!.env.example
+
+# Secrets des Edge Functions en développement local
+# (supabase/functions/.env est lu automatiquement par `supabase start`).
+supabase/functions/.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

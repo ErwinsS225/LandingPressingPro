@@ -19,6 +19,11 @@ import { sendLead } from "./lib/leads";
 import { initReveal } from "./lib/reveal";
 import { initThemeToggle } from "./lib/theme";
 import { initParallax } from "./lib/parallax";
+import {
+  captureAttribution,
+  initTracking,
+  trackPageView,
+} from "./lib/analytics";
 
 /** Assemble la page complète dans #app. */
 function render(): void {
@@ -53,6 +58,13 @@ function bootstrap(): void {
   initReveal();
   initThemeToggle();
   initParallax();
+
+  // Mesure : l'attribution est capturée avant le premier événement, sinon
+  // la `page_view` partirait sans elle. Les deux fonctions sont inertes
+  // tant qu'aucun endpoint n'est configuré (cf. src/lib/analytics.ts).
+  captureAttribution();
+  initTracking();
+  trackPageView();
 
   // Demande d'essai : voir `src/lib/leads.ts` pour le canal d'envoi et la
   // variable `VITE_LEAD_ENDPOINT` qui permet de brancher un vrai service de

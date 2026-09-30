@@ -11,6 +11,101 @@
     />
     <title>PressIvoire — Votre pressing, mieux organisé</title>
 
+    <!-- Domaine canonique. À changer si le site est déployé ailleurs :
+         il doit correspondre à l'URL du sitemap (public/sitemap.xml). -->
+    <link rel="canonical" href="https://pressivoire.ci/" />
+
+    <!-- Open Graph : c'est ce que WhatsApp, Facebook et LinkedIn lisent pour
+         construire l'aperçu d'un lien. Ils n'exécutent pas de JavaScript, donc
+         seule la balise og:image leur donne une vignette. Sans elle, un lien
+         PressIvoire partagé sur WhatsApp s'affiche sans aperçu. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PressIvoire" />
+    <meta property="og:locale" content="fr_CI" />
+    <meta property="og:url" content="https://pressivoire.ci/" />
+    <meta
+      property="og:title"
+      content="PressIvoire — Le logiciel de gestion pour pressings ivoiriens"
+    />
+    <meta
+      property="og:description"
+      content="Suivez vos commandes, vos clients et vos paiements depuis votre téléphone. Essai 30 jours, sans carte bancaire. Tarifs en FCFA."
+    />
+    <!-- public/og-image.svg : à generate en 1200x630 png (voir README). -->
+    <meta property="og:image" content="https://pressivoire.ci/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Écran PressIvoire montrant le suivi d'une commande de pressing"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="PressIvoire — Le logiciel de gestion pour pressings ivoiriens"
+    />
+    <meta
+      name="twitter:description"
+      content="Suivez vos commandes, vos clients et vos paiements depuis votre téléphone. Essai 30 jours, sans carte bancaire."
+    />
+    <meta name="twitter:image" content="https://pressivoire.ci/og-image.png" />
+
+    <!-- Données structurées : lues par Google pour les résultats enrichis
+         (étoiles, FAQ, prix). Doivent refléter fidèlement src/data/marketing.ts. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PressIvoire",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Android, iOS, Web",
+        "description": "Logiciel de gestion pour pressings ivoiriens : suivi des commandes, des clients et des paiements.",
+        "url": "https://pressivoire.ci/",
+        "inLanguage": "fr-CI",
+        "areaServed": { "@type": "Country", "name": "Côte d'Ivoire" },
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "0",
+          "highPrice": "20000",
+          "priceCurrency": "XOF",
+          "offerCount": "3"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Est-ce que je peux essayer avant de payer ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui, l'essai de 30 jours vous permet de découvrir l'offre PRO sans carte bancaire."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quels moyens de paiement sont disponibles ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les moyens actuellement prévus comprennent Wave, Orange Money et MTN MoMo. Confirmez leur disponibilité avec l'équipe avant votre souscription."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Je ne suis pas à l'aise avec l'informatique.",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PressIvoire est conçu pour rester simple. L'équipe peut vous accompagner pour découvrir les fonctions principales et démarrer."
+            }
+          }
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

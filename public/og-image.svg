@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="PressIvoire — Logiciel de gestion pour pressings ivoiriens">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b4036" />
+      <stop offset="100%" stop-color="#092e27" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- pastille citron, echo du token --color-lime -->
+  <circle cx="1010" cy="120" r="150" fill="#dff06d" opacity="0.08" />
+  <circle cx="180" cy="560" r="110" fill="#f47b43" opacity="0.07" />
+
+  <g transform="translate(88, 96)">
+    <rect width="76" height="76" rx="19" fill="#126c54" />
+    <path fill="#dff06d" d="M23 56V20h16.2c7.4 0 12.6 4.6 12.6 11.5 0 7.2-5.3 11.9-13 11.9h-6.7V56H23zm9.1-17.7h6.1c3.1 0 5-1.9 5-4.7 0-2.6-1.9-4.4-5-4.4h-6.1v9.1z" />
+    <text x="96" y="55" font-family="Manrope, Segoe UI, sans-serif" font-size="42" font-weight="800" fill="#ffffff">
+      Press<tspan fill="#dff06d">Ivoire</tspan>
+    </text>
+  </g>
+
+  <text x="88" y="292" font-family="Manrope, Segoe UI, sans-serif" font-size="66" font-weight="800" fill="#ffffff">
+    Le logiciel de gestion
+  </text>
+  <text x="88" y="368" font-family="Manrope, Segoe UI, sans-serif" font-size="66" font-weight="800" fill="#dff06d">
+    pour pressings ivoiriens
+  </text>
+
+  <text x="88" y="440" font-family="DM Sans, Segoe UI, sans-serif" font-size="30" fill="#b5c7bf">
+    Commandes · Clients · Paiements — depuis votre téléphone
+  </text>
+
+  <rect x="88" y="486" width="440" height="72" rx="36" fill="#126c54" />
+  <text x="308" y="533" text-anchor="middle" font-family="DM Sans, Segoe UI, sans-serif" font-size="30" font-weight="700" fill="#ffffff">
+    Essai 30 jours · Sans carte bancaire
+  </text>
+</svg>

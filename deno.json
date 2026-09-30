@@ -1,0 +1,10 @@
+{
+  "//": "Les Edge Functions tournent sur Deno, pas sur Node ni le navigateur. Ce fichier indique à l'éditeur (serveur Deno LSP) quelles globales existent, sinon `Deno.env` est signalé comme inconnu. Le projet du site, lui, reste vérifié par le tsconfig racine — voir README.",
+
+  "compilerOptions": {
+    "lib": ["deno.window", "dom", "dom.iterable", "esnext"],
+    "strict": true
+  },
+
+  "exclude": ["node_modules", "dist"]
+}

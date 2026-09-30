@@ -121,7 +121,13 @@ export function SupportSection(): string {
           <div class="eyebrow">${support.eyebrow}</div>
           <h2>${support.title}</h2>
           <p>${support.copy}</p>
-          <a href="${mailto}" class="btn">${support.cta} <span>↗</span></a>
+          <a
+            href="${mailto}"
+            class="btn"
+            data-track="contact_click"
+            data-track-source="section_contact"
+            >${support.cta} <span>↗</span></a
+          >
           <p class="contact-note">${contact.note}</p>
         </div>
         ${IconCardGrid({ cards: support.cards, className: "support-cards" })}
@@ -143,7 +149,12 @@ export function FinalCtaSection(): string {
         </div>
         <h2 class="mx-auto mb-[18px] max-w-[750px]">${finalCta.title}</h2>
         <p class="!text-[#c5d4ce]">${finalCta.copy}</p>
-        <button type="button" class="btn btn-lime mt-3" data-open>
+        <button
+          type="button"
+          class="btn btn-lime mt-3"
+          data-open
+          data-open-source="cta_final"
+        >
           ${finalCta.cta}
         </button>
         <p class="fine">${finalCta.fine}</p>
