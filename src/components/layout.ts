@@ -1,5 +1,10 @@
 import { html } from "../lib/dom";
-import { announcement, navLinks } from "../data/site";
+import {
+  announcement,
+  contact,
+  navLinks,
+  whatsappLink,
+} from "../data/site";
 
 export function AnnouncementBar(): string {
   return html`
@@ -82,13 +87,16 @@ export function Header(): string {
 export function FloatingContact(): string {
   return html`
     <a
-      href="#contact"
-      aria-label="Contacter l’équipe PressIvoire"
+      href="${whatsappLink(contact.whatsapp, contact.whatsappMessage)}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Écrire à l'équipe PressIvoire sur WhatsApp"
       data-track="contact_click"
       data-track-source="flottant"
+      data-track-canal="whatsapp"
       class="fixed bottom-5 right-5 z-[9] rounded-full bg-wa px-[17px] py-3 text-[13px] font-bold text-white shadow-wa transition hover:brightness-110 max-[650px]:bottom-[13px] max-[650px]:right-[13px] max-[650px]:px-[14px] max-[650px]:py-[11px]"
     >
-      <span class="mr-[7px] text-[17px]">◉</span>Parler à l’équipe
+      <span class="mr-[7px] text-[17px]">◉</span>Parler sur WhatsApp
     </a>
   `;
 }

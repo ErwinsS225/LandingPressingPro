@@ -8,7 +8,7 @@ import {
   support,
   testimonial,
 } from "../data/sections";
-import { contact } from "../data/site";
+import { contact, whatsappLink } from "../data/site";
 import { IconCardGrid, SectionHead, StepView } from "../components/cards";
 
 export function PainSection(): string {
@@ -121,14 +121,29 @@ export function SupportSection(): string {
           <div class="eyebrow">${support.eyebrow}</div>
           <h2>${support.title}</h2>
           <p>${support.copy}</p>
-          <a
-            href="${mailto}"
-            class="btn"
-            data-track="contact_click"
-            data-track-source="section_contact"
-            >${support.cta} <span>↗</span></a
-          >
-          <p class="contact-note">${contact.note}</p>
+          <div class="flex flex-wrap gap-3 max-[650px]:grid">
+            <a
+              href="${whatsappLink(contact.whatsapp, contact.whatsappMessage)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn"
+              data-track="contact_click"
+              data-track-source="section_contact"
+              data-track-canal="whatsapp"
+              >WhatsApp <span>↗</span></a
+            >
+            <a
+              href="${mailto}"
+              class="btn btn-light"
+              data-track="contact_click"
+              data-track-source="section_contact"
+              data-track-canal="email"
+              >${support.cta} <span>↗</span></a
+            >
+          </div>
+          <p class="contact-note">
+            ${contact.whatsappDisplay} · ${contact.hours}
+          </p>
         </div>
         ${IconCardGrid({ cards: support.cards, className: "support-cards" })}
       </div>
