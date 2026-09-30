@@ -1,0 +1,544 @@
+@import "tailwindcss";
+
+/* Variante `dark:` pilotée par data-theme sur <html> (cf. src/lib/theme.ts). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens — migrés depuis les variables CSS de l'ancien fichier */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-ink: #142d29;
+  --color-muted: #64736e;
+  --color-green: #126c54;
+  --color-green-dark: #0c5844;
+  /* Vert *textuel* : le vert de marque est trop sombre sur fond sombre. */
+  --color-green-fg: #126c54;
+  --color-deep: #0b4036;
+  --color-deep-2: #092e27;
+  --color-lime: #dff06d;
+  --color-orange: #f47b43;
+  --color-wa: #168657;
+  --color-icon-bg: #f1f4e7;
+
+  /* Rôles — surchargés en thème sombre (voir bloc suivant). */
+  --color-canvas: #f8f7f2;
+  --color-card: #ffffff;
+  --color-alt-1: #eef1e8;
+  --color-alt-2: #f0f1e9;
+  --color-alt-3: #e9efe6;
+  --color-fg: #142d29;
+  --color-fg-muted: #64736e;
+  --color-fg-soft: #4e625a;
+  --color-fg-faint: #77827d;
+  --color-border: #e5e7df;
+  --color-border-soft: #edf0eb;
+  --color-header: #f8f7f2ed;
+
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 24px 70px #193c3015;
+  --shadow-phone: 0 36px 65px #163c302d;
+  --shadow-featured: 0 14px 40px #164e3513;
+  --shadow-wa: 0 10px 30px #103e2d36;
+
+  --radius-card: 1rem;
+
+  /* Agrandissement des cartes au survol, cf. section « Cartes agrandies ».
+     Un(scale) de 1.12 fait passer la carte de tarifs de 375 à 420 px : elle
+     reste sous la hauteur du viewport et ne mord que de quelques pixels sur
+     ses voisines. Au-delà, la carte déborde franchement et l'effet devient un
+     défaut de mise en page plutôt qu'un clin d'œil. */
+  --card-grow-scale: 1.12;
+  --card-grow-duration: 700ms;
+  --card-grow-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --card-grow-lift: -4px;
+  --shadow-grow: 0 32px 64px -24px #193c3040;
+
+  /* Transition d'apparition au défilement. Les cartes agrandies doivent
+     reprendre ces valeurs : `transition` remplace la liste, il ne s'y ajoute
+     pas. */
+  --reveal-duration: 0.65s;
+  --reveal-ease: cubic-bezier(0.2, 0.7, 0.25, 1);
+
+  --breakpoint-xs: 22.5rem; /* 360px */
+}
+
+/* ------------------------------------------------------------------ */
+/*  Thème sombre — les tokens de rôle sont redefinis, la palette de  */
+/*  marque reste identique dans les deux thèmes.                      */
+/* ------------------------------------------------------------------ */
+@layer theme {
+  [data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-canvas: #0d1614;
+    --color-card: #16211f;
+    --color-alt-1: #111b19;
+    --color-alt-2: #121d1a;
+    --color-alt-3: #131e1c;
+    --color-fg: #e6eeeb;
+    --color-fg-muted: #9aaba5;
+    --color-fg-soft: #b3c2bc;
+    --color-fg-faint: #8b9a94;
+    --color-border: #27332f;
+    --color-border-soft: #1f2a27;
+    --color-icon-bg: #1d2b27;
+    --color-header: #0d1614ed;
+    --color-green-fg: #5ecfa4;
+
+    --shadow-card: 0 24px 70px #00000040;
+    --shadow-phone: 0 36px 65px #00000055;
+    --shadow-featured: 0 14px 40px #00000038;
+    --shadow-grow: 0 32px 64px -24px #00000070;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                              */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.4rem; /* 86px */
+    color-scheme: light;
+  }
+
+  [data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-fg leading-[1.55];
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-[-0.045em] leading-[1.08];
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    @apply mt-0;
+  }
+
+  h1 {
+    @apply mb-[22px] max-w-[760px] text-[clamp(2.7rem,6.1vw,5.4rem)];
+  }
+
+  h2 {
+    @apply mb-[18px] text-[clamp(2rem,4vw,3.25rem)];
+  }
+
+  h3 {
+    @apply mb-2.5 text-[1.2rem];
+  }
+
+  p {
+    @apply text-fg-muted;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Composants utilitaires                                             */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .wrap {
+    @apply mx-auto w-[min(1160px,calc(100%-44px))] max-[650px]:w-[min(100%-34px,500px)];
+  }
+
+  .section {
+    @apply py-24 max-[650px]:py-[69px];
+  }
+
+  .section-head {
+    @apply mx-auto mb-[45px] max-w-[670px] text-center max-[650px]:mb-[31px];
+  }
+
+  .section-head p {
+    @apply text-[17px] max-[650px]:text-[15px];
+  }
+
+  .eyebrow {
+    @apply mb-[22px] inline-flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-[0.12em] text-fg;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply h-0.5 w-[23px] bg-orange;
+  }
+
+  .section-head .eyebrow {
+    @apply justify-center;
+  }
+
+  .icon {
+    @apply mb-5 grid size-[46px] place-items-center rounded-[14px] bg-icon-bg text-[23px] max-[650px]:mb-3.5 max-[650px]:size-[41px];
+  }
+
+  .btn {
+    @apply inline-flex min-h-[52px] cursor-pointer items-center justify-center gap-2.5 rounded-xl border-0 bg-green px-[23px] text-[15px] font-bold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-green-dark max-[650px]:min-h-[41px] max-[650px]:px-[13px] max-[650px]:text-xs;
+  }
+
+  .btn-light {
+    @apply border border-border bg-card text-fg;
+  }
+
+  .btn-lime {
+    @apply bg-lime text-deep;
+  }
+
+  .btn-sm {
+    @apply min-h-[43px] px-[18px] text-sm;
+  }
+
+  .modal-card {
+    @apply bg-canvas;
+  }
+
+  .modal-card h2 {
+    @apply text-[27px];
+  }
+
+  .modal-label {
+    @apply my-1.5 block text-[13px] font-bold;
+  }
+
+  .modal-card input {
+    @apply h-12 w-full rounded-[9px] border border-border bg-card px-[13px] text-fg;
+    font: inherit;
+  }
+
+  .grid-cards-2 {
+    @apply grid grid-cols-1 gap-3 sm:grid-cols-2;
+  }
+
+  .grid-cards-3 {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-cards-4 {
+    @apply grid grid-cols-2 gap-[15px] lg:grid-cols-4 max-[650px]:gap-2.5;
+  }
+
+  /* --- Hero ------------------------------------------------------- */
+  .trustline {
+    @apply mt-[22px] flex list-none flex-wrap gap-x-5 gap-y-2.5 p-0 text-[13px] font-semibold text-fg-soft max-[650px]:gap-x-3.5 max-[650px]:text-xs;
+  }
+
+  .trustline li::before {
+    content: "✓";
+    @apply mr-[7px] font-black text-green-fg;
+  }
+
+  .payments {
+    @apply mt-[31px] flex flex-wrap items-center gap-2.5 text-xs text-fg-faint max-[650px]:mt-[23px];
+  }
+
+  .pay-chip {
+    @apply rounded-lg border border-border bg-card px-2.5 py-1.5 text-xs font-bold text-fg;
+  }
+
+  .visual-orb {
+    @apply absolute right-[2%] top-[3%] size-[420px] rounded-full bg-[#e6eccd] max-[650px]:right-[5%] max-[650px]:size-[320px] max-[900px]:size-[350px];
+  }
+
+  [data-theme="dark"] .visual-orb {
+    background: #1b2b26;
+  }
+
+  .visual-note {
+    @apply absolute right-0 top-[7%] z-[2] grid size-[108px] rotate-[9deg] place-items-center rounded-full bg-orange text-center text-[13px] font-extrabold leading-[1.2] text-white max-[650px]:right-[2%] max-[650px]:size-[88px] max-[650px]:text-[11px];
+  }
+
+  .float-card {
+    @apply absolute bottom-[12%] left-0 z-[2] rounded-[15px] bg-card px-[18px] py-[15px] text-xs shadow-card max-[650px]:bottom-[10%] max-[650px]:left-[2%] max-[650px]:px-[14px] max-[650px]:py-3 max-[900px]:left-[-5px];
+  }
+
+  .float-card b {
+    @apply block text-[17px] text-green-fg;
+  }
+
+  .float-card span {
+    @apply text-fg-muted;
+  }
+
+  /* --- Sections --------------------------------------------------- */
+  .bridge {
+    @apply mx-auto mt-[42px] max-w-[730px] text-center font-display text-[21px] font-bold leading-[1.5] max-[650px]:text-lg;
+  }
+
+  .steps-grid {
+    @apply grid grid-cols-2 gap-[18px] lg:grid-cols-4 max-[650px]:gap-2.5;
+    counter-reset: step;
+  }
+
+  .stepno {
+    @apply mb-7 font-display text-[13px] font-extrabold text-orange max-[650px]:mb-[19px];
+  }
+
+  .stepno::before {
+    content: "0" counter(step);
+  }
+
+  .step {
+    @apply bg-card;
+    counter-increment: step;
+  }
+
+  /* --- Témoignage ------------------------------------------------- */
+  .testimonial-box {
+    @apply mx-auto grid max-w-[760px] items-center gap-[22px] rounded-[20px] border border-white/20 bg-card/[0.04] p-8 max-[650px]:grid-cols-[24px_1fr] max-[650px]:gap-3 max-[650px]:p-5;
+  }
+
+  .quote-mark {
+    @apply font-serif text-[70px] font-extrabold leading-[0.7] text-lime max-[650px]:text-[47px];
+  }
+
+  .testimonial-box blockquote {
+    @apply m-0 font-display text-[clamp(18px,2vw,25px)] font-semibold leading-[1.5];
+  }
+
+  .testimonial-note {
+    @apply mt-[19px] text-center text-xs text-[#c2d2cb];
+  }
+
+  /* --- Comparatif ------------------------------------------------- */
+  .compare-wrap {
+    @apply overflow-x-auto rounded-2xl border border-border bg-card;
+  }
+
+  .compare {
+    @apply w-full min-w-[620px] border-collapse text-left text-sm;
+  }
+
+  .compare th,
+  .compare td {
+    @apply border-b border-border-soft px-5 py-[17px] text-left text-sm max-[650px]:px-3.5 max-[650px]:py-3.5;
+  }
+
+  .compare thead th {
+    @apply bg-alt-1 text-[13px];
+  }
+
+  .compare tr > :last-child {
+    @apply font-bold text-green-fg;
+  }
+
+  .compare tbody tr:last-child > * {
+    @apply border-0;
+  }
+
+  /* --- Tarifs ----------------------------------------------------- */
+  .price-card {
+    @apply bg-card;
+  }
+
+  .price-card--featured {
+    @apply border-2 border-green shadow-featured max-[650px]:order-first;
+  }
+
+  .ribbon {
+    @apply absolute right-[15px] top-3.5 rounded-md bg-lime px-2 py-[5px] text-[10px] font-extrabold text-deep;
+  }
+
+  .plan {
+    @apply text-xs font-extrabold uppercase tracking-[0.1em] text-green-fg;
+  }
+
+  .price {
+    @apply my-3.5 font-display text-[34px] font-extrabold tracking-[-1.5px] text-fg;
+  }
+
+  .price small {
+    @apply text-[13px] font-medium tracking-normal text-fg-muted;
+  }
+
+  .annual {
+    @apply min-h-5 text-xs text-fg-muted;
+  }
+
+  .plan-desc {
+    @apply min-h-[43px] text-[13px] max-[650px]:min-h-0;
+  }
+
+  .price-card ul {
+    @apply my-[22px] list-none p-0;
+  }
+
+  .price-card li {
+    @apply my-3 text-[13px] text-fg-soft;
+  }
+
+  .price-card li::before {
+    content: "✓";
+    @apply mr-[9px] font-black text-green-fg;
+  }
+
+  .fine {
+    @apply mt-2.5 text-center text-[11px];
+  }
+
+  .guarantees {
+    @apply mx-auto mt-7 flex flex-wrap justify-center gap-x-[25px] gap-y-3 text-xs font-semibold text-fg-soft;
+  }
+
+  .guarantees span::before {
+    content: "✓ ";
+    @apply text-green-fg;
+  }
+
+  /* --- FAQ -------------------------------------------------------- */
+  .faq-grid {
+    @apply grid gap-3 md:grid-cols-2;
+  }
+
+  .faq-grid details {
+    @apply bg-card;
+  }
+
+  .faq-grid summary {
+    list-style: none;
+  }
+
+  .faq-grid summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-grid summary::after {
+    content: "+";
+    @apply text-[20px] leading-none text-green-fg;
+  }
+
+  .faq-grid details[open] summary::after {
+    content: "−";
+  }
+
+  /* --- Support ---------------------------------------------------- */
+  .support-grid {
+    @apply grid items-center gap-[50px] lg:grid-cols-[1.1fr_0.9fr] max-[650px]:grid-cols-1 max-[650px]:gap-[27px];
+  }
+
+  .support-cards {
+    @apply grid gap-3 sm:grid-cols-2 max-[370px]:grid-cols-1;
+  }
+
+  .support-cards article {
+    @apply bg-card p-5 max-[650px]:p-4;
+  }
+
+  .contact-note {
+    /* Noir en clair, clair en sombre : le noir de marque serait invisible. */
+    @apply mt-2 !text-[13px] !font-extrabold !text-black dark:!text-[#f3cc75];
+  }
+
+  /* --- CTA final -------------------------------------------------- */
+  .final-cta::before,
+  .final-cta::after {
+    content: "";
+    @apply absolute size-[250px] rounded-full border border-white/15;
+  }
+
+  .final-cta::before {
+    @apply -left-[90px] -top-[135px];
+  }
+
+  .final-cta::after {
+    @apply -bottom-[160px] -right-20;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Animations d'apparition                                           */
+/* ------------------------------------------------------------------ */
+@layer utilities {
+  /* Modale : visible uniquement quand l'état JS le demande. */
+  #modal[data-modal-state="open"] {
+    display: grid;
+  }
+
+  /* Modèle de la transition d'apparition, relu par les cartes agrandies. */
+  .reveal-ready .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity var(--reveal-duration) ease,
+      transform var(--reveal-duration) var(--reveal-ease);
+    transition-delay: var(--delay, 0ms);
+  }
+
+  .reveal-ready .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /*
+   * --- Cartes agrandies au survol --------------------------------
+   *
+   * `scale`, `translate` et `box-shadow` plutôt que `transform` : ces cartes
+   * portent aussi `.reveal`, qui pilote `transform` pour leur apparition au
+   * défilement. Les propriétés sont indépendantes en CSS, les deux animations
+   * se superposent sans se contrarier.
+   *
+   * `transition` REMPLACE la liste de `.reveal`, il ne s'y ajoute pas : la
+   * reprendre intégralement est donc unavoidable, d'où les durées reprises
+   * par les jetons `--reveal-duration` / `--reveal-ease`, lus par les deux
+   * règles. Une refonte de `.reveal` doit mettre ces jetons à jour aussi.
+   */
+  #comment .steps-grid > *,
+  #tarifs .grid-cards-3 > * {
+    transition:
+      opacity var(--reveal-duration) ease,
+      transform var(--reveal-duration) var(--reveal-ease),
+      scale var(--card-grow-duration) var(--card-grow-ease),
+      translate var(--card-grow-duration) var(--card-grow-ease),
+      box-shadow var(--card-grow-duration) var(--card-grow-ease);
+    /* Le décalage par lot est propre à l'apparition : l'agrandissement part
+       dès le survol, sans attendre. */
+    transition-delay: var(--delay, 0ms), var(--delay, 0ms), 0s, 0s, 0s;
+  }
+
+  /* `@media (hover: hover)` : sur un écran tactile, `:hover` reste collé après
+     un tap et la carte resterait agrandie. Même garde que les boutons. */
+  @media (hover: hover) {
+    #comment .steps-grid > *:hover,
+    #tarifs .grid-cards-3 > *:hover {
+      scale: var(--card-grow-scale);
+      translate: 0 var(--card-grow-lift);
+      box-shadow: var(--shadow-grow);
+      /* Passe devant ses voisines : sans cela la carte agrandie se fait
+         recouvrir. Les cartes sont des éléments de grille, `z-index` s'y
+         applique sans `position`. */
+      z-index: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-ready .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* L'agrandissement au survol est conservé, mais sans rampe : c'est un
+     changement d'état instantané, pas un mouvement. */
+  #comment .steps-grid > *,
+  #tarifs .grid-cards-3 > * {
+    transition: none;
+  }
+}
