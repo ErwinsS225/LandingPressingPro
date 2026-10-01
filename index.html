@@ -14,9 +14,10 @@
     <!--
       URL canonique : l'adresse que Google doit indexer pour CE site.
 
-      Elle vient de `VITE_SITE_URL` (fichier .env) : Vite remplace `%VITE_*%`
-      dans index.html au moment du build. Une seule source de verite, donc
-      impossible que le canonical et le sitemap ne soient pas d'accord.
+      Elle vient de `VITE_SITE_URL` (fichier .env) : Vite remplace les
+      variables `VITE_` dans index.html au moment du build. Une seule source
+      de verite, donc impossible que le canonical et le sitemap ne soient
+      pas d'accord.
 
       ⚠ NE PAS y remettre un domaine « en dur » ici. Une URL canonique qui
       designe un domaine que vous ne possedez pas — ou qui ne repond pas —
