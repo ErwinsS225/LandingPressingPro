@@ -38,7 +38,7 @@ export const pains = {
 
 export const features = {
   eyebrow: "Tout au même endroit",
-  title: "PressIvoire vous aide à garder le fil.",
+  title: "PressingPro vous aide à garder le fil.",
   intro:
     "Les essentiels du pressing, accessibles depuis un écran clair et facile à utiliser.",
   cards: [
@@ -112,7 +112,7 @@ export const steps = {
 
 export const testimonial = {
   eyebrow: "Du concret, pas de promesses en l’air",
-  title: "À vous de voir si PressIvoire vous convient.",
+  title: "À vous de voir si PressingPro vous convient.",
   intro:
     "Nous préférons vous montrer l’outil et répondre à vos questions plutôt que d’inventer des avis clients.",
   quote:
@@ -128,28 +128,28 @@ export const comparison = {
   columns: [
     { key: "pressing", label: "Au pressing" },
     { key: "papier", label: "Avec notes papier" },
-    { key: "pressivoire", label: "Avec PressIvoire" },
+    { key: "pressingpro", label: "Avec PressingPro" },
   ] satisfies ComparisonColumn[],
   rows: [
     {
       pressing: "Retrouver une commande",
       papier: "Feuilleter le cahier",
-      pressivoire: "Rechercher dans la liste",
+      pressingpro: "Rechercher dans la liste",
     },
     {
       pressing: "Connaître le statut",
       papier: "Demander à l’équipe",
-      pressivoire: "Le consulter sur l’écran",
+      pressingpro: "Le consulter sur l’écran",
     },
     {
       pressing: "Garder une trace",
       papier: "Notes et mémoire",
-      pressivoire: "Fiche de commande centralisée",
+      pressingpro: "Fiche de commande centralisée",
     },
     {
       pressing: "Suivre les règlements",
       papier: "Recompter les reçus",
-      pressivoire: "Consulter l’historique",
+      pressingpro: "Consulter l’historique",
     },
   ] satisfies ComparisonRow[],
 };
@@ -157,7 +157,7 @@ export const comparison = {
 export const support = {
   eyebrow: "Vous n’êtes pas seul",
   title: "Un coup de main pour démarrer.",
-  copy: "Échangez avec l’équipe PressIvoire pour découvrir l’application, poser vos questions et voir si elle convient à votre établissement.",
+  copy: "Échangez avec l’équipe PressingPro pour découvrir l’application, poser vos questions et voir si elle convient à votre établissement.",
   cta: "Écrire à l’équipe",
   cards: [
     {
@@ -188,7 +188,7 @@ export const support = {
 export const finalCta = {
   eyebrow: "À vous de choisir",
   title: "Et si votre prochain cahier tenait dans votre téléphone ?",
-  copy: "Essayez PressIvoire pendant 30 jours et découvrez une autre façon de suivre votre pressing.",
+  copy: "Essayez PressingPro pendant 30 jours et découvrez une autre façon de suivre votre pressing.",
   cta: "🚀 Démarrer mon essai gratuit",
   fine: "Sans carte bancaire · Prenez le temps de découvrir",
 };

@@ -73,7 +73,7 @@ export const faq = {
     {
       question: "Je ne suis pas à l’aise avec l’informatique.",
       answer:
-        "PressIvoire est conçu pour rester simple. L’équipe peut vous accompagner pour découvrir les fonctions principales et démarrer.",
+        "PressingPro est conçu pour rester simple. L’équipe peut vous accompagner pour découvrir les fonctions principales et démarrer.",
     },
     {
       question: "Est-ce que je peux essayer avant de payer ?",
@@ -93,10 +93,10 @@ export const faq = {
     {
       question: "Mes données sont-elles protégées ?",
       answer:
-        "La protection des données doit être confirmée dans les conditions et la politique de confidentialité de PressIvoire avant mise en service.",
+        "La protection des données doit être confirmée dans les conditions et la politique de confidentialité de PressingPro avant mise en service.",
     },
     {
-      question: "PressIvoire fonctionne-t-il partout en Côte d’Ivoire ?",
+      question: "PressingPro fonctionne-t-il partout en Côte d’Ivoire ?",
       answer:
         "Contactez l’équipe pour vérifier la compatibilité avec votre téléphone, votre connexion et votre organisation.",
     },
@@ -134,7 +134,7 @@ export const footer = {
       ],
     },
   ] satisfies FooterColumn[],
-  copyright: "© 2026 PressIvoire · Côte d’Ivoire",
+  copyright: "© 2026 PressingPro · Côte d’Ivoire",
   payments: ["Wave", "Orange Money", "MTN MoMo"],
 };
 

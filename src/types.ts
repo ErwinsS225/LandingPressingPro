@@ -44,11 +44,11 @@ export interface Step {
 export interface ComparisonRow {
   pressing: string;
   papier: string;
-  pressivoire: string;
+  pressingpro: string;
 }
 
 export interface ComparisonColumn {
-  key: "pressing" | "papier" | "pressivoire";
+  key: "pressing" | "papier" | "pressingpro";
   label: string;
 }
 

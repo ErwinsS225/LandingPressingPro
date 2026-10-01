@@ -48,7 +48,7 @@ const UTM_KEYS = [
 const ATTRIBUTION_DAYS = 30;
 
 /** Clé de stockage de l'attribution. */
-const STORE_KEY = "pressivoire:attribution";
+const STORE_KEY = "pressingpro:attribution";
 
 interface Attribution {
   params: Record<string, string>;

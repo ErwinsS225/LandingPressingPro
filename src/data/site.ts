@@ -1,11 +1,11 @@
 import type { SiteMeta, NavLink } from "../types";
 
 export const site: SiteMeta = {
-  name: "PressIvoire",
+  name: "PressingPro",
   locale: "fr",
-  title: "PressIvoire — Votre pressing, mieux organisé",
+  title: "PressingPro — Votre pressing, mieux organisé",
   description:
-    "PressIvoire aide les pressings ivoiriens à suivre commandes, clients et paiements depuis leur téléphone.",
+    "PressingPro aide les pressings ivoiriens à suivre commandes, clients et paiements depuis leur téléphone.",
   themeColor: "#f8f7f2",
 };
 
@@ -57,13 +57,27 @@ export const navLinks: NavLink[] = [
 
 export const announcement = {
   highlight: "Offre de lancement",
-  text: "30 jours pour essayer PressIvoire, sans carte bancaire",
+  text: "30 jours pour essayer PressingPro, sans carte bancaire",
   mobileSuffix: "Pensé pour les pressings de Côte d’Ivoire",
 };
 
 export const contact = {
-  email: "bonjour@pressivoire.ci",
-  mailtoSubject: "Demande de démonstration PressIvoire",
+  /**
+   * Adresse de contact.
+   *
+   * Elle vient de `VITE_CONTACT_EMAIL` : c'est une information qui vous
+   * appartient, pas une donnee du produit, et elle change avec la marque et le
+   * domaine. La garder en dur ici imposeait de redemander une modification de
+   * code a chaque changement — c'etait la cause du `bonjour@pressivoire.ci`
+   * residuel, une adresse d'un domaine que nous ne possedions pas.
+   *
+   * Sans variable, on retombe sur une adresse Gmail. C'est un choix
+   * volontaire : une adresse mailto qui ne repond pas fait perdre le contact
+   * commercial, alors qu'une adresse temporaire, elle, fonctionne. Remplacez-la
+   * des que vous avez la bonne.
+   */
+  email: import.meta.env.VITE_CONTACT_EMAIL ?? "bonjour.pressingpro@gmail.com",
+  mailtoSubject: "Demande de démonstration PressingPro",
 
   /**
    * Numéro au format international sans « + » ni espaces, tel que
@@ -79,7 +93,7 @@ export const contact = {
    * de réponse concret plutôt qu'un vague « bonjour ».
    */
   whatsappMessage:
-    "Bonjour, je viens de voir votre site. Je suis propriétaire d'un pressing et j'aimerais en savoir plus sur PressIvoire.",
+    "Bonjour, je viens de voir votre site. Je suis propriétaire d'un pressing et j'aimerais en savoir plus sur PressingPro.",
 
   hours: "Lundi – samedi, 8h – 19h",
 };

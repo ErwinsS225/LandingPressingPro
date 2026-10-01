@@ -7,49 +7,59 @@
     <meta name="theme-color" content="#f8f7f2" />
     <meta
       name="description"
-      content="PressIvoire aide les pressings ivoiriens à suivre commandes, clients et paiements depuis leur téléphone."
+      content="PressingPro aide les pressings ivoiriens à suivre commandes, clients et paiements depuis leur téléphone."
     />
-    <title>PressIvoire — Votre pressing, mieux organisé</title>
+    <title>PressingPro — Votre pressing, mieux organisé</title>
 
-    <!-- Domaine canonique. À changer si le site est déployé ailleurs :
-         il doit correspondre à l'URL du sitemap (public/sitemap.xml). -->
-    <link rel="canonical" href="https://pressivoire.ci/" />
+    <!--
+      URL canonique : l'adresse que Google doit indexer pour CE site.
+
+      Elle vient de `VITE_SITE_URL` (fichier .env) : Vite remplace `%VITE_*%`
+      dans index.html au moment du build. Une seule source de verite, donc
+      impossible que le canonical et le sitemap ne soient pas d'accord.
+
+      ⚠ NE PAS y remettre un domaine « en dur » ici. Une URL canonique qui
+      designe un domaine que vous ne possedez pas — ou qui ne repond pas —
+      dit a Google « ce contenu est ailleurs » : la page n'est plus indexee du
+      tout. C'etait le cas avec pressivoire.ci, qui appartient a un tiers.
+    -->
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
 
     <!-- Open Graph : c'est ce que WhatsApp, Facebook et LinkedIn lisent pour
          construire l'aperçu d'un lien. Ils n'exécutent pas de JavaScript, donc
          seule la balise og:image leur donne une vignette. Sans elle, un lien
-         PressIvoire partagé sur WhatsApp s'affiche sans aperçu. -->
+         PressingPro partagé sur WhatsApp s'affiche sans aperçu. -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="PressIvoire" />
+    <meta property="og:site_name" content="PressingPro" />
     <meta property="og:locale" content="fr_CI" />
-    <meta property="og:url" content="https://pressivoire.ci/" />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
     <meta
       property="og:title"
-      content="PressIvoire — Le logiciel de gestion pour pressings ivoiriens"
+      content="PressingPro — Le logiciel de gestion pour pressings ivoiriens"
     />
     <meta
       property="og:description"
       content="Suivez vos commandes, vos clients et vos paiements depuis votre téléphone. Essai 30 jours, sans carte bancaire. Tarifs en FCFA."
     />
     <!-- public/og-image.svg : à generate en 1200x630 png (voir README). -->
-    <meta property="og:image" content="https://pressivoire.ci/og-image.png" />
+    <meta property="og:image" content="%VITE_SITE_URL%/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Écran PressIvoire montrant le suivi d'une commande de pressing"
+      content="Écran PressingPro montrant le suivi d'une commande de pressing"
     />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="PressIvoire — Le logiciel de gestion pour pressings ivoiriens"
+      content="PressingPro — Le logiciel de gestion pour pressings ivoiriens"
     />
     <meta
       name="twitter:description"
       content="Suivez vos commandes, vos clients et vos paiements depuis votre téléphone. Essai 30 jours, sans carte bancaire."
     />
-    <meta name="twitter:image" content="https://pressivoire.ci/og-image.png" />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/og-image.png" />
 
     <!-- Données structurées : lues par Google pour les résultats enrichis
          (étoiles, FAQ, prix). Doivent refléter fidèlement src/data/marketing.ts. -->
@@ -57,11 +67,11 @@
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "PressIvoire",
+        "name": "PressingPro",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Android, iOS, Web",
         "description": "Logiciel de gestion pour pressings ivoiriens : suivi des commandes, des clients et des paiements.",
-        "url": "https://pressivoire.ci/",
+        "url": "%VITE_SITE_URL%/",
         "inLanguage": "fr-CI",
         "areaServed": { "@type": "Country", "name": "Côte d'Ivoire" },
         "offers": {
@@ -99,7 +109,7 @@
             "name": "Je ne suis pas à l'aise avec l'informatique.",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "PressIvoire est conçu pour rester simple. L'équipe peut vous accompagner pour découvrir les fonctions principales et démarrer."
+              "text": "PressingPro est conçu pour rester simple. L'équipe peut vous accompagner pour découvrir les fonctions principales et démarrer."
             }
           }
         ]
@@ -118,9 +128,15 @@
     <script>
       // Applique le thème avant le premier rendu pour éviter le clignotement
       // clair → sombre. Même logique que src/lib/theme.ts.
+      //
+      // ⚠ La clé DOIT rester identique à `STORAGE_KEY` dans src/lib/theme.ts.
+      // Ce script ne peut pas l'importer — il s'exécute avant le chargement du
+      // module, ce qui est justement son rôle. Les deux lectures doivent donc
+      // porter la même chaîne : si elles divergent, le thème est posé ici puis
+      // relu comme absent au chargement, et le site repasse en clair.
       (function () {
         try {
-          var stored = localStorage.getItem("pressivoire:theme");
+          var stored = localStorage.getItem("pressingpro:theme");
           var theme =
             stored === "light" || stored === "dark"
               ? stored

@@ -100,7 +100,7 @@ export function ComparisonSection(): string {
                     <tr>
                       <th scope="row" class="font-normal">${row.pressing}</th>
                       <td>${row.papier}</td>
-                      <td>${row.pressivoire}</td>
+                      <td>${row.pressingpro}</td>
                     </tr>
                   `,
                 )

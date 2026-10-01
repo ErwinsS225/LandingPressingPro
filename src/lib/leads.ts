@@ -25,7 +25,7 @@ import { insertLead, supabaseConfigured, type LeadRow } from "./supabase";
 /** Identifiant du formulaire Formspree, utilisé en secours. */
 export const FORM_ENDPOINT = "https://formspree.io/f/mzezokna";
 
-const SUBJECT = "Nouvelle demande d'essai — PressIvoire";
+const SUBJECT = "Nouvelle demande d'essai — PressingPro";
 
 /** Résume l'attribution en une seule chaîne stockable. */
 function attributionToSource(): string | null {

@@ -88,7 +88,7 @@ export function FloatingContact(): string {
       href="${whatsappLink(contact.whatsapp, contact.whatsappMessage)}"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Écrire à l'équipe PressIvoire sur WhatsApp"
+      aria-label="Écrire à l'équipe PressingPro sur WhatsApp"
       data-track="contact_click"
       data-track-source="flottant"
       data-track-canal="whatsapp"

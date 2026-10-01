@@ -14,7 +14,7 @@ export const hero = {
     "Accompagnement en français",
   ],
   payments: ["Wave", "Orange Money", "MTN MoMo"],
-  visualLabel: "Aperçu de l’application PressIvoire",
+  visualLabel: "Aperçu de l’application PressingPro",
   visualNote: "FAIT POUR\nLA CÔTE\nD’IVOIRE 🇨🇮",
   greeting: "Bonjour, votre pressing 👋",
   screenTitle: "Tout est sous contrôle.",

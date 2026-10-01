@@ -4,4 +4,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pressivoire.ci/sitemap.xml
+Sitemap: %VITE_SITE_URL%/sitemap.xml

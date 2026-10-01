@@ -11,7 +11,7 @@ import { track } from "./analytics";
 
 export type Theme = "light" | "dark";
 
-const STORAGE_KEY = "pressivoire:theme";
+const STORAGE_KEY = "pressingpro:theme";
 
 const isTheme = (value: string | null): value is Theme =>
   value === "light" || value === "dark";
